@@ -6,19 +6,12 @@
         <title>Document</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/style.css">
     </head>
     <body>
         
         <h1>Fetch API</h1>
-        <button id="btn">fetch</button>
+        <button id="btn">Click to fetch</button>
 
-        <script>
-            document.getElementById("btn").onclick = () => {
-                const url = 'http://localhost:5000/home';
-                fetch(url)
-                .then(res => res.json())
-                .then(data => console.log(data));
-            }
-        </script>
     </body>
 </html>
