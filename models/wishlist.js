@@ -5,4 +5,4 @@ const WishListSchema = Schema({
     wishlist_item:String
 })
 
-module.exports = mongoose.model('wishes', WishListSchema)
+mongoose.model('wishes', WishListSchema)

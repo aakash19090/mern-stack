@@ -4,6 +4,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const port = 5000;
 
+// Importing Model
+require('./models/wishlist');
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
     extended:false
@@ -12,8 +15,10 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json());
 
+
 // Importing Routes
 require('./routes')(app);
+
 
 // Serving Static Files from Serverside. Useful to link external CSS or JS files to index.html file
 app.use(express.static('public'))

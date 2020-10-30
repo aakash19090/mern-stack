@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { mongourl } = require('./config/keys')
 
 // Importing Schema from Model 
-const Wishlist = require('./models/wishlist')
+const Wishlist = mongoose.model('wishes')
 // To connect connect to MongoDB database
 mongoose.connect(mongourl, {useNewUrlParser: true, useUnifiedTopology: true })
 
