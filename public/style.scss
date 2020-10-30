@@ -1,0 +1,54 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* 
+.nav{
+    justify-content: flex-end;
+} */
+
+ul.navbar-nav{
+    margin-left: auto;
+}
+
+.banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    background: #483d8b;
+
+    h1{
+        font-size: 35px;
+        color: #fff;
+    }
+}
+
+
+form{
+    .btn{
+        outline: none;
+        width: 100px;
+    }
+}
+
+.wish_items{
+    ol{
+        li{
+            margin-bottom: 20px;
+            .item{
+                display: inline-block;
+            }
+            .btn_span{
+                float: right;
+                overflow: hidden;
+                .btn{
+                    width: 80px;
+                    font-size: 12px;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}

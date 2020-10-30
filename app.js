@@ -1,39 +1,42 @@
 const express = require('express');
+const path = require('path');
 const app = express();
+const bodyParser = require('body-parser');
 const port = 5000;
 
-// Sending Responses at various routes through ExpressJS at 5000 port
+// Importing Model
+require('./models/wishlist');
 
-app.get('/', (req, res)=>{
-    res.send("Hello world from Express JS")
-})
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended:false
+}));
 
+// parse application/json
+app.use(bodyParser.json());
+
+
+// Importing Routes
+require('./routes')(app);
+
+
+// Serving Static Files from Serverside. Useful to link external CSS or JS files to index.html file
+app.use(express.static('public'))
+
+// Setting View Engine
+app.set('view engine', 'ejs')
 
 // To allow GET requests from this server
+app.use(function (req, res, next) {
 
-app.use(function(req,res,next){
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET');
-    
-    // Pass to the next layer of middleware
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+  
+    // Pass to next layer of middleware
     next();
 });
-
-app.get('/home', (req, res)=>{
-    res.send({
-        firstName : "Akash",
-        lastName : "Sharma"
-    })
-})
-
-// app.get('/test', (req, res)=>{
-//     res.send("Just a test from Express JS")
-// })
-
-// app.get('/basic', (req, res)=>{
-//     res.send("These are just basics of Express JS")
-// })
-
 
 
 app.listen(port, ()=>{

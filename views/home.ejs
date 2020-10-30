@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Home Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/style.css">
+
+    </head>
+    <body>
+        
+        <%- include('partials/nav') %>
+        
+        <div class="banner">
+            <h1>Create Your Wishlist</h1>
+        </div>
+
+        <div class="wish_form">
+            <div class="container">
+                <div class="inner mt-5 w-75 mx-auto">
+
+                    <form id="wishlist_form">
+
+                        <div class="form-group">
+                            <label for="item">Enter item :</label>
+                            <input type="text" name="item" class="form-control" placeholder="Enter your wishlist item">
+                        </div>
+
+                        <button type="submit" class="btn btn-sm btn-primary">Add Item</button>
+                    </form>
+
+                    <div class="wish_items ml-4 mt-5">
+                        <ol>
+                            <% wishlist.map( item => { %>
+                                <li> 
+                                    <p class="item"><%= item.wishlist_item %> </p>
+                                    <span class="btn_span">
+                                        <button onclick="deleteItem(this)" class="btn btn-sm btn-danger delete_btn" data-item=<%= item.wishlist_item %>>Delete</button>
+                                    </span>
+                                </li>
+                            <% }) %>
+
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script src="/script.js"></script>
+    </body>
+</html>
