@@ -1,15 +1,11 @@
 // Sending Responses at various routes through ExpressJS at 5000 port
 
-const data = {
-    firstName : "Akash",
-    lastName : "Sharma",
-    occupation : "Software Developer"
-}
+let wishlist_items = [];
 
 module.exports = (app) => {
 
     app.get('/', (req, res)=>{
-        res.render('home', {data:data})
+        res.render('home', {wishlist:wishlist_items})
     })
     
     app.get('/about', (req, res)=>{
@@ -21,8 +17,14 @@ module.exports = (app) => {
 
     })
 
-    // Sending Responses to CLient side (index.html File)
+    // Handle Post Request from Client Side
+    app.post('/form-data', (req,res)=>{
+        wishlist_items.push(req.body.item)
+        res.send(JSON.stringify(req.body.item))
+    })
 
+
+    // Sending Files as Responses to CLient side (index.html File)
 
     // Sending whole file to Client Side
     // app.get('/file', (req, res) =>{

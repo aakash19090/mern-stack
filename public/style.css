@@ -1,13 +1,54 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
+
 /* 
 .nav{
     justify-content: flex-end;
 } */
-
-ul.navbar-nav{
-    margin-left: auto;
+ul.navbar-nav {
+  margin-left: auto;
 }
+
+.banner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 300px;
+  background: #483d8b;
+}
+
+.banner h1 {
+  font-size: 35px;
+  color: #fff;
+}
+
+form .btn {
+  outline: none;
+  width: 100px;
+}
+
+.wish_items ol li {
+  margin-bottom: 20px;
+}
+
+.wish_items ol li .btn_span {
+  float: right;
+  overflow: hidden;
+}
+
+.wish_items ol li .btn_span .btn {
+  width: 80px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+/*# sourceMappingURL=style.css.map */

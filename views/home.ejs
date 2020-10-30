@@ -16,8 +16,42 @@
         
         <%- include('partials/nav') %>
         
-        <h1>This is Home Page</h1>
-        <p>Hello my name is <%= `${data.firstName} ${data.lastName}` %> and i am a <%= data.occupation %></p>
+        <div class="banner">
+            <h1>Create Your Wishlist</h1>
+        </div>
+
+        <div class="wish_form">
+            <div class="container">
+                <div class="inner mt-5 w-75 mx-auto">
+
+                    <form id="wishlist_form">
+
+                        <div class="form-group">
+                            <label for="item">Enter item :</label>
+                            <input type="text" name="item" class="form-control" placeholder="Enter your wishlist item">
+                        </div>
+
+                        <button type="submit" class="btn btn-sm btn-primary">Add Item</button>
+                    </form>
+
+                    <div class="wish_items ml-4 mt-5">
+                        <ol>
+                            <% wishlist.map( item => { %>
+                                <li> <%= item %> 
+                                
+                                    <span class="btn_span">
+                                        <button class="btn btn-sm btn-danger delete_btn">Delete</button>
+                                    </span>
+                                </li>
+                            <% }) %>
+
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -27,5 +61,7 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script src="/script.js"></script>
     </body>
 </html>
