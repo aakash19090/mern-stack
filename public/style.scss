@@ -37,6 +37,9 @@ form{
     ol{
         li{
             margin-bottom: 20px;
+            .item{
+                display: inline-block;
+            }
             .btn_span{
                 float: right;
                 overflow: hidden;

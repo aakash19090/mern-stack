@@ -4,6 +4,8 @@ let wishlist_items = [];
 
 module.exports = (app) => {
 
+    // Handle Get Routes
+
     app.get('/', (req, res)=>{
         res.render('home', {wishlist:wishlist_items})
     })
@@ -21,6 +23,20 @@ module.exports = (app) => {
     app.post('/form-data', (req,res)=>{
         wishlist_items.push(req.body.item)
         res.send(JSON.stringify(req.body.item))
+    })
+
+    // Handle Delete Request from Client Side
+    app.delete('/remove/:id', (req,res)=>{
+        let itemToDelete = req.params.id;
+
+        let itemIndex = wishlist_items.findIndex( item => {
+            if( item === itemToDelete ){
+                return item
+            }
+        })
+
+        wishlist_items.splice(itemIndex, 1);
+        res.send(wishlist_items)
     })
 
 

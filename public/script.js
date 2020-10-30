@@ -1,7 +1,7 @@
 document.getElementById("wishlist_form").onsubmit = (e) => {
+    const url = 'http://localhost:5000/form-data';
     e.preventDefault()
 
-    const url = 'http://localhost:5000/form-data';
 
     let data = new URLSearchParams();
 
@@ -16,6 +16,19 @@ document.getElementById("wishlist_form").onsubmit = (e) => {
         body: data,
     }).then(res => res.json())
     .then(res2 => {
+        location.reload();
+    })
+
+}
+
+deleteItem = (item) => {
+    let itemVal = item.getAttribute("data-item");
+    const deleteUrl = 'http://localhost:5000/remove/';
+    console.log(`${deleteUrl}${itemVal}`)
+    fetch(`${deleteUrl}${itemVal}`, {
+        method: "delete"
+    }).then(res => res.json())
+    .then(data => {
         location.reload();
     })
 }

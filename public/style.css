@@ -41,6 +41,10 @@ form .btn {
   margin-bottom: 20px;
 }
 
+.wish_items ol li .item {
+  display: inline-block;
+}
+
 .wish_items ol li .btn_span {
   float: right;
   overflow: hidden;
