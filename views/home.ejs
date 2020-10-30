@@ -38,9 +38,9 @@
                         <ol>
                             <% wishlist.map( item => { %>
                                 <li> 
-                                    <p class="item"><%= item %> </p>
+                                    <p class="item"><%= item.wishlist_item %> </p>
                                     <span class="btn_span">
-                                        <button onclick="deleteItem(this)" class="btn btn-sm btn-danger delete_btn" data-item=<%= item %>>Delete</button>
+                                        <button onclick="deleteItem(this)" class="btn btn-sm btn-danger delete_btn" data-item=<%= item.wishlist_item %>>Delete</button>
                                     </span>
                                 </li>
                             <% }) %>

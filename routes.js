@@ -9,14 +9,16 @@ mongoose.connect(mongourl, {useNewUrlParser: true, useUnifiedTopology: true })
 
 // Sending Responses at various routes through ExpressJS at 5000 port
 
-let wishlist_items = [];
-
 module.exports = (app) => {
 
     // Handle Get Routes
 
     app.get('/', (req, res)=>{
-        res.render('home', {wishlist:wishlist_items})
+
+        // Get From MongoDB
+        Wishlist.find({}).then(data => {
+            res.render('home',{wishlist:data})
+        })
     })
     
     app.get('/about', (req, res)=>{
@@ -30,13 +32,13 @@ module.exports = (app) => {
 
     // Handle Post Request from Client Side
     app.post('/form-data', (req,res)=>{
-
+        // Posting On MongoDb
         const Item = new Wishlist({
             wishlist_item:req.body.item
         });
 
         Item.save().then(data => {
-            console.log("Saved!!!!")
+            res.send(data)
         })
 
         // wishlist_items.push(req.body.item)
@@ -45,16 +47,26 @@ module.exports = (app) => {
 
     // Handle Delete Request from Client Side
     app.delete('/remove/:id', (req,res)=>{
-        let itemToDelete = req.params.id;
+        
+        // Delete from MongoDB
 
-        let itemIndex = wishlist_items.findIndex( item => {
-            if( item === itemToDelete ){
-                return item
-            }
-        })
+        Wishlist.findOneAndRemove({wishlist_item:req.params.id}).then(data=>{
+            console.log(req.params.id);
+            res.send(data);
 
-        wishlist_items.splice(itemIndex, 1);
-        res.send(wishlist_items)
+        });
+
+
+        // let itemToDelete = req.params.id;
+
+        // let itemIndex = wishlist_items.findIndex( item => {
+        //     if( item === itemToDelete ){
+        //         return item
+        //     }
+        // })
+
+        // wishlist_items.splice(itemIndex, 1);
+        // res.send(wishlist_items)
     })
 
 
