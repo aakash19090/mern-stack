@@ -1,3 +1,12 @@
+const mongoose = require('mongoose');
+const { mongourl } = require('./config/keys')
+
+// Importing Schema from Model 
+const Wishlist = require('./models/wishlist')
+// To connect connect to MongoDB database
+mongoose.connect(mongourl, { useNewUrlParser: true, useUnifiedTopology:true  })
+
+
 // Sending Responses at various routes through ExpressJS at 5000 port
 
 let wishlist_items = [];
@@ -21,8 +30,17 @@ module.exports = (app) => {
 
     // Handle Post Request from Client Side
     app.post('/form-data', (req,res)=>{
-        wishlist_items.push(req.body.item)
-        res.send(JSON.stringify(req.body.item))
+
+        const Item = new Wishlist({
+            wishlist_item:req.body.item
+        });
+
+        Item.save().then(data => {
+            console.log("Saved!!!!")
+        })
+
+        // wishlist_items.push(req.body.item)
+        // res.send(wishlist_items)
     })
 
     // Handle Delete Request from Client Side
