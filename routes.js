@@ -4,7 +4,7 @@ const { mongourl } = require('./config/keys')
 // Importing Schema from Model 
 const Wishlist = require('./models/wishlist')
 // To connect connect to MongoDB database
-mongoose.connect(mongourl, { useNewUrlParser: true, useUnifiedTopology:true  })
+mongoose.connect(mongourl, {useNewUrlParser: true, useUnifiedTopology: true })
 
 
 // Sending Responses at various routes through ExpressJS at 5000 port
